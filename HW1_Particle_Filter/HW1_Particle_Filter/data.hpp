@@ -3,31 +3,30 @@
 /*
  * data.hpp
  *
- *  Created on: Mar 31, 2019
- *      Author: linzh
+ *  In this header file some classes and functions
+ *  used to process different data types are declared.
  */
 
 
 #ifndef DATA_HPP_
 #define DATA_HPP_
 
-#include <stdlib.h>
-#include <vector>
+#include <cstdlib>
 #include <queue>
 #include <string>
 
 #include <opencv2/core/core.hpp>
 
 enum DataType {
-	ODOM, SENSOR,
+	ODOM, SENSOR, 
 };
 
 struct RobotDatum {
 	DataType type;
-	cv::Vec2f center0;
+	cv::Vec2f center0;    // center of the robot
 	float heading0;    // orientation of robot
 	float timestamp;
-	cv::Vec2f center1;
+	cv::Vec2f center1;    // center of the sensor
 	float heading1;    // orientation of sensor
 	float *measurements;
 };
