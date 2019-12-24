@@ -1,8 +1,9 @@
 #pragma once
 
+#include <string>
+#include <vector>
 #include <iostream>
 #include <fstream>
-#include <string>
 #include <sstream>
 #include <algorithm>
 
@@ -48,6 +49,7 @@ cv::Mat Mapper::readMap(std::string filename) {
 			else if (prefix.compare("global_map[0]:") == 0) {
 				linestream >> num_rows >> num_cols;
 				is_header = false;
+                index = num_rows - 1;
 				this->grid = cv::Mat(num_rows, num_cols, CV_32F);
 			}
 		}
@@ -57,7 +59,7 @@ cv::Mat Mapper::readMap(std::string filename) {
 				linestream >> entry;
 				grid.at<float>(index, i) = entry;
 			}
-			++index;
+			--index;
 		}
 	}
 	cv::Mat copy;
@@ -70,12 +72,12 @@ void Mapper::drawMap(std::string winname) {
 	cv::imshow(winname, grid);
 }
 
-std::queue<RobotDatum> ReadLog(std::string filename) {
+std::vector<RobotDatum> readLog(std::string filename) {
 	std::ifstream ifs(filename);
 	std::string line;
-	std::queue<RobotDatum> data;
+	std::vector<RobotDatum> data;
 	if (!ifs) {
-		std::cout << "Cannot find the file!" << std::endl;
+        std::cout << "Cannot find the file" << filename << std::endl;
 		return data;
 	}
 	while (std::getline(ifs, line)) {
@@ -84,21 +86,22 @@ std::queue<RobotDatum> ReadLog(std::string filename) {
 		linestream >> prefix;
 		if (prefix == 'O') {
 			RobotDatum datum;
-			datum.type = ODOM;
-			linestream >> datum.center0[0] >> datum.center0[1] >> datum.heading0;
+			datum.type = prefix;
+			linestream >> datum.pose0[0] >> datum.pose0[1] >> datum.pose0[2];
 			linestream >> datum.timestamp;
-			data.push(datum);
+			data.push_back(datum);
 		}
 		else if (prefix == 'L') {
 			RobotDatum datum;
-			datum.type = SENSOR;
-			linestream >> datum.center0[0] >> datum.center0[1] >> datum.heading0 >> datum.center1[0] >> datum.center1[1] >> datum.heading1;
-			datum.measurements = new float[180];
+			datum.type = prefix;
+			linestream >> datum.pose0[0] >> datum.pose0[1] >> datum.pose0[2] >> datum.pose1[0] >> datum.pose1[1] >> datum.pose1[1];
+			datum.measurements = std::vector<int>(180, -1);
 			for (int i = 0; i < 180; i++) {
 				linestream >> datum.measurements[i];
 			}
 			linestream >> datum.timestamp;
-			data.push(datum);
+			data.push_back(datum);
+            
 		}
 		else {
 			continue;

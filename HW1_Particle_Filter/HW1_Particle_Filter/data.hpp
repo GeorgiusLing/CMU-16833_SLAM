@@ -12,23 +12,19 @@
 #define DATA_HPP_
 
 #include <cstdlib>
-#include <queue>
+#include <vector>
 #include <string>
 
 #include <opencv2/core/core.hpp>
 
-enum DataType {
-	ODOM, SENSOR, 
-};
-
 struct RobotDatum {
-	DataType type;
-	cv::Vec2f center0;    // center of the robot
-	float heading0;    // orientation of robot
-	float timestamp;
-	cv::Vec2f center1;    // center of the sensor
-	float heading1;    // orientation of sensor
-	float *measurements;
+	char type;
+	cv::Vec3d pose0;    // pose of the robot
+	
+	cv::Vec3d pose1;    // pose of the sensor
+	std::vector<int> measurements;
+    
+    double timestamp;
 };
 
 class Mapper {
@@ -42,7 +38,6 @@ private:
 	int resolution;
 };
 
-
-std::queue<RobotDatum> readLog(std::string filename);
+std::vector<RobotDatum> readLog(std::string filename);
 
 #endif /* DATA_HPP_ */

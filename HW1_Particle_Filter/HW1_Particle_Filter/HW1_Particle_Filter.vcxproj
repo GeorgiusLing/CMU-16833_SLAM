@@ -23,6 +23,7 @@
     <ProjectGuid>{B693D1F7-6CEA-454B-891E-C443CF97C035}</ProjectGuid>
     <RootNamespace>HW1ParticleFilter</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <ProjectName>HW1_Particle_Filter</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -85,6 +86,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\Program Files (x86)\opencv\build\include</AdditionalIncludeDirectories>
+      <OpenMPSupport>true</OpenMPSupport>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\Program Files (x86)\opencv\build\x64\vc14\lib</AdditionalLibraryDirectories>
@@ -124,10 +126,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="data.cpp" />
+    <ClCompile Include="filter.cpp" />
     <ClCompile Include="visualize.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="data.hpp" />
+    <ClInclude Include="filter.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -21,9 +21,15 @@
     <ClCompile Include="data.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="filter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="data.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="filter.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
