@@ -1,1 +1,1 @@
-# CMU-16833_SLAM
+# CMU-16833: Robot Localization and Mapping
