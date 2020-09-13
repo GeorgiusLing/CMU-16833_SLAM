@@ -12,3 +12,5 @@ The data folder contains the data file needed for this program. Each line repres
 * Each line with more numerals represents a series of measurements, with the format $r_1$, $\beta_1$, $r_2$, $\beta_2$ ...
 
 The scripts folder contains 2 Python scripts. The `EKF_SLAM.py`is the main routine. The `drawing_utils.py`contains some functions for visualization.
+
+![Image](https://github.com/GeorgiusLing/CMU-16833_SLAM/blob/master/HW2_EKF_SLAM/result/result.png?raw=true)
