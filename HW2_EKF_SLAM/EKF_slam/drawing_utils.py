@@ -2,21 +2,6 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 
-'''
-def draw_cov_ellipse(centroid, cov, edgecolor):
-    
-    eigvals, eigvec = np.linalg.eig(cov)
-    cov_ellipse = matplotlib.patches.Ellipse(xy=centroid, \
-                                             width=2 * np.sqrt(3 * eigvals[0]), \
-                                             height=2 * np.sqrt(3 * eigvals[1]), \
-                                             angle=np.rad2deg(np.arccos(eigvec[0, 0])), \
-                                             edgecolor=edgecolor, \
-                                             facecolor='none', \
-                                             linewidth=1)
-    ax = plt.gca()
-    ax.add_patch(cov_ellipse)
-'''
-
 def draw_cov_ellipse(centroid, cov, edgecolor):
     
     U, s, _ = np.linalg.svd(cov)
