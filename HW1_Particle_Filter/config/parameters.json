@@ -1,0 +1,14 @@
+{
+   "num_particles": 500,
+   "alpha1": 0.001,
+   "alpha2": 0.001,
+   "alpha3": 0.01,
+   "alpha4": 0.01,
+   "z_hit": 1,
+   "z_random": 1000,
+   "z_max": 0.05,
+   "z_short": 0.12,
+   "lambda_short": 0.1,
+   "sigma_hit": 100,
+   "range": 8131
+}
